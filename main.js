@@ -4,7 +4,6 @@ const tagPrefix = `${process.env.INPUT_PREFIX || ''}*`;
 
 exec(`git for-each-ref --sort=-v:refname --count 1 --format="%(refname:short)" "refs/tags/${tagPrefix}"`, (err, tag, stderr) => {
     tag = tag.trim();
-    tag = tag.replace("-r","");
     if (err) {
         console.log('\x1b[33m%s\x1b[0m', 'Could not find any tags because: ');
         console.log('\x1b[31m%s\x1b[0m', stderr);
