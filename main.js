@@ -2,7 +2,7 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const tagPrefix = `${process.env.INPUT_PREFIX || ''}*`;
 
-exec(`git for-each-ref --sort=-creatordate --count 1 --format="%(refname:short)" "refs/tags/${tagPrefix}"`, (err, tag, stderr) => {
+exec(`git for-each-ref --sort=-v:refname --count 1 --format="%(refname:short)" "refs/tags/${tagPrefix}"`, (err, tag, stderr) => {
     tag = tag.trim();
     tag = tag.replace("-r","");
     if (err) {
