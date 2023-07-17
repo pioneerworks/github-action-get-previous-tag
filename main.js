@@ -25,13 +25,13 @@ exec(`git for-each-ref --sort=-v:refname --format="%(refname:short)" "refs/tags/
   builds_sorted = builds.sort(function(a, b) {
     return a - b;
   });
-  console.log(builds_sorted);
   last_build_number = builds_sorted[builds_sorted.length-1];
+  console.log(build_tag_hash);
   console.log('\x1b[33m%s\x1b[0m', 'last_build_number:');
   console.log('\x1b[33m%s\x1b[0m', last_build_number);
   
   previous_tag = build_tag_hash[last_build_number];
-
+  console.log(previous_tag);
   if (err) {
       console.log('\x1b[33m%s\x1b[0m', 'Could not find any tags because: ');
       console.log('\x1b[31m%s\x1b[0m', stderr);
