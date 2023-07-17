@@ -22,9 +22,11 @@ exec(`git for-each-ref --sort=-v:refname --format="%(refname:short)" "refs/tags/
        builds.push(build_number);
      }
   } 
-  sorted = builds.sort(); 
-  console.log(sorted);
-  last_build_number = sorted[sorted.length-1];
+  builds_sorted = builds.sort(function(a, b) {
+    return a - b;
+  });
+  console.log(builds_sorted);
+  last_build_number = builds_sorted[builds_sorted.length-1];
   console.log('\x1b[33m%s\x1b[0m', 'last_build_number:');
   console.log('\x1b[33m%s\x1b[0m', last_build_number);
   
